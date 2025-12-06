@@ -33,11 +33,4 @@ jobs:
           HF_USERNAME: ${{ secrets.HF_USERNAME }}
           SPACE_NAME: ${{ secrets.SPACE_NAME }}
         run: |
-          # Login to HuggingFace using Python module
-          python -m huggingface_hub.commands.huggingface_cli login --token $HF_TOKEN
-          
-          # Upload all files to your Space
-          python -m huggingface_hub.commands.huggingface_cli upload $HF_USERNAME/$SPACE_NAME . . --repo-type=space
-          
-          echo "✅ Deployment complete!"
-          echo "🚀 Visit: https://huggingface.co/spaces/$HF_USERNAME/$SPACE_NAME"
+          python .github/deploy_to_hf.py
