@@ -24,7 +24,8 @@ jobs:
       # Step 3: Install HuggingFace CLI
       - name: Install HuggingFace CLI
         run: |
-          pip install huggingface_hub
+          python -m pip install --upgrade pip
+          python -m pip install "huggingface_hub[cli]"
       
       # Step 4: Deploy to HuggingFace Spaces
       - name: Deploy to HuggingFace
