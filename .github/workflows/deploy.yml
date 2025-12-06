@@ -1,0 +1,43 @@
+name: Deploy to HuggingFace Spaces
+
+# This workflow runs automatically when you push to main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Step 1: Get your code from GitHub
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      # Step 2: Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      # Step 3: Install HuggingFace CLI
+      - name: Install HuggingFace CLI
+        run: |
+          pip install huggingface_hub
+      
+      # Step 4: Deploy to HuggingFace Spaces
+      - name: Deploy to HuggingFace
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_USERNAME: ${{ secrets.HF_USERNAME }}
+          SPACE_NAME: ${{ secrets.SPACE_NAME }}
+        run: |
+          # Login to HuggingFace
+          huggingface-cli login --token $HF_TOKEN
+          
+          # Upload all files to your Space
+          huggingface-cli upload $HF_USERNAME/$SPACE_NAME . . --repo-type=space
+          
+          echo "✅ Deployment complete!"
+          echo "🚀 Visit: https://huggingface.co/spaces/$HF_USERNAME/$SPACE_NAME"
