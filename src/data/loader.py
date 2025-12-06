@@ -3,7 +3,7 @@ from typing import Dict
 from pypdf import PdfReader
 import docx
 
-print("🚀 Script is running!")
+#print("🚀 Script is running!")
 
 class DataLoader:
     """Loads all resume-related data from the data/ directory."""
@@ -116,7 +116,7 @@ class DataLoader:
            page_text = page.extract_text()
            if page_text:
               text += page_text + "\n"
-           return text.strip()
+              return text.strip()
     
 
     def _extract_docx_text(self, docx_path: Path) -> str:

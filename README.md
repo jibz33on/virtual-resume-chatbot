@@ -8,4 +8,3 @@ sdk_version: 4.44.1
 app_file: src/app.py
 pinned: false
 license: mit
----
