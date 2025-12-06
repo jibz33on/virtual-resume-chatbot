@@ -26,8 +26,8 @@ class Config:
     
     # Model names
     OPENAI_MODEL = "gpt-4o-mini"
-    GEMINI_MODEL = "gemini-1.5-flash"
-    GROQ_MODEL = "llama-3.1-70b-versatile"
+    GEMINI_MODEL = "gemini-2.5-flash"
+    GROQ_MODEL = "llama-3.3-70b-versatile"
     
     # ========================================
     # NOTIFICATION SETTINGS (Pushover)
